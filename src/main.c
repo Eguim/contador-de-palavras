@@ -10,13 +10,22 @@
 int main() {
 
   char c;
+  int i,aux;
 
   c = 1;
+  i = 0;
+  aux = 0;
 
   while (c != '\n') {
     scanf("%c", &c);
+	if(aux==0 && c!=' '){
+		aux=1;
+		i++;
+	}
+	else if (aux==1 && c==' ')
+		aux=0;
   }
 
-  printf("1\n");
+  printf("%d\n",i);
   return 0;
 }
