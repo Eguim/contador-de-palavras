@@ -5,27 +5,50 @@
  * numero de palavras separadas que recebeu e, apos, encerrar.
  */
 
+
 #include <stdio.h>
 
 int main() {
 
-  char c;
-  int i,aux;
+ char c, n=0, flut=0, letra=0, pal;
 
-  c = 1;
-  i = 0;
-  aux = 0;
+ while (c != '\n') 
+{
+		scanf("%c", &c);
 
-  while (c != '\n') {
-    scanf("%c", &c);
-	if(aux==0 && c!=' '){
-		aux=1;
-		i++;
+	if ( c ==','||c == '.'||c == ':'||c == ';' || c == '-' ||c == '\n' || c == ' ' || c == '?' ||c == '!')
+	{
+			
+		if (flut==0 && n)
+		{
+			if (c == '.' || c == ',')
+			{
+					flut = 1;
+			}			
+			pal++;
+			n = 0;
+
+			} else if (n && flut)
+			  {
+				n = 0;
+				flut = 0;
+			  }else if (letra)
+				{
+				pal++;
+				letra = 0;
+				}
+			}
+		else {
+			if (c == '0'||c == '1'||c == '2'||c == '3'||c == '4'||c == '5'||c == '6'||c == '7'||c == '8'||c == '9') 
+			{
+				n = 1;
+			}
+			else
+			{
+				letra = 1;
+			}
+		}
 	}
-	else if (aux==1 && c==' ')
-		aux=0;
-  }
-
-  printf("%d\n",i);
-  return 0;
+	printf("%d", pal);
+	return 0;
 }
